@@ -1,0 +1,9 @@
+[
+  {
+    "id": "1",
+    "name": "管理员",
+    "email": "admin@admin.com",
+    "username": "admin",
+    "password": "12345"
+  }
+]

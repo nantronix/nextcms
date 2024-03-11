@@ -1,0 +1,49 @@
+{
+  "header": {
+    "logo": {
+      "src": "https://tinacms-template.s3.us-west-1.amazonaws.com/logo_aimx.png",
+      "alt": "aimx",
+      "width": 130,
+      "height": 130
+    },
+    "nav": [
+      {
+        "href": "#header",
+        "label": "首页"
+      },
+      {
+        "href": "#introduce",
+        "label": "集团简介"
+      },
+      {
+        "href": "#product",
+        "label": "产品介绍"
+      },
+      {
+        "href": "#story",
+        "label": "集团历程"
+      },
+      {
+        "href": "#ylink",
+        "label": "合作伙伴"
+      },
+      {
+        "href": "#footer",
+        "label": "联系我们"
+      }
+    ]
+  },
+  "footer": {
+    "color": "default",
+    "social": {
+      "facebook": "/",
+      "twitter": "/",
+      "instagram": "/"
+    }
+  },
+  "theme": {
+    "color": "blue",
+    "font": "sans",
+    "darkMode": "system"
+  }
+}

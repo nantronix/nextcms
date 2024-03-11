@@ -1,0 +1,59 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+
+import Link from 'next/link'
+import Logo from '@/components/common/Logo'
+import Dropdown from '@/components/utils/dropdown'
+import MobileMenu from './MobileMenu'
+import type { HeaderType } from './data.d'
+
+export default function Header({ data }: { data: HeaderType }) {
+  const [top, setTop] = useState<boolean>(true)
+
+  // detect whether user has scrolled the page down by 10px
+  const scrollHandler = () => {
+    window.pageYOffset > 10 ? setTop(false) : setTop(true)
+  }
+
+  useEffect(() => {
+    scrollHandler()
+    window.addEventListener('scroll', scrollHandler)
+    return () => window.removeEventListener('scroll', scrollHandler)
+  }, [top])
+
+  return (
+    <header
+      className={`z-30 w-full transition duration-300 ease-in-out max-sm:bg-blue-800 sm:fixed md:bg-opacity-60 ${!top ? 'bg-blue-800 shadow-lg backdrop-blur-sm max-sm:fixed' : 'max-sm:relative'}`}
+      id="header"
+    >
+      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+        <div className="flex h-16 items-center justify-between md:h-20">
+          {/* Site branding */}
+          <div className="mr-4 shrink-0">
+            <Logo />
+          </div>
+
+          {/* Desktop navigation */}
+          <nav className="hidden md:flex md:grow">
+            {/* Desktop menu links */}
+            <ul className="flex grow flex-wrap items-center justify-end">
+              {data.nav.map((item, i) => (
+                <li key={i}>
+                  <Link
+                    href={item.href}
+                    className="flex px-5 py-2 text-sm font-medium leading-tight text-white hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <MobileMenu data={data} />
+        </div>
+      </div>
+    </header>
+  )
+}
